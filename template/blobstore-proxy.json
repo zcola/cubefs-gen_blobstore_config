@@ -1,0 +1,29 @@
+{
+   "bind_addr": ":9600",
+   "host": "http://IP:9600",
+   "idc": "z0",
+   "cluster_id": 202,
+   "clustermgr": {
+     "hosts": [
+       "http://7.34.198.207:9998",
+       "http://7.34.198.208:9998",
+       "http://7.34.198.209:9998"
+       ]
+   },
+   "auth": {
+       "enable_auth": false,
+       "secret": "test"
+   },
+   "mq": {
+     "blob_delete_topic": "tang_202_blob_delete",
+     "shard_repair_topic": "tang_202_shard_repair",
+     "shard_repair_priority_topic": "tang_202_shard_repair_prior",
+     "msg_sender": {
+       "broker_list": ["tdadasdase.com:9092"]
+     }
+   },
+   "log": {
+     "level": "info",
+     "filename": "/home/elk/var/log/blobstore-proxy.log"
+   }
+}

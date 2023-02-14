@@ -1,3 +1,6 @@
+.*.un~
+.idea/
+gen_config/
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]

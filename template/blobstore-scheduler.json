@@ -1,0 +1,41 @@
+{
+   "bind_addr": ":9800",
+   "cluster_id": 202,
+   "services": {
+     "leader": 1,
+     "node_id": 1,
+     "members": {"1": "7.34.198.207:9800"}
+   },
+   "service_register": {
+     "host": "http://7.34.198.207:9800",
+     "idc": "z0"
+   },
+   "clustermgr": {
+     "hosts": ["http://7.34.198.207:9998", "http://7.34.198.208:9998", "http://7.34.198.209:9998"]
+   },
+   "kafka": {
+     "broker_list": ["dasdasdsacom:9092"],
+     "blob_delete" : { "normal": { "topic": "tang_202_blob_delete" } },
+     "blob_delete" : { "failed": { "topic": "tang_202_blob_delete_failed" }},
+     "shard_repair" : { "normal": { "topic": "tang_202_shard_repair" }},
+     "shard_repair" : { "failed": { "topic": "tang_202_shard_repair_prior" }},
+     "shard_repair" : { "priority": { "topic": "tang_202_shard_repair_failed" }}
+   },
+   "blob_delete": {
+     "delete_log": {
+       "dir": "/home/elk/var/log/blobstore-scheduler/delete_log"
+     }
+   },
+   "shard_repair": {
+     "orphan_shard_log": {
+       "dir": "/home/elk/var/log/blobstore-scheduler/orphan_shard_log"
+     }
+   },
+   "log": {
+     "level": "info",
+     "filename": "/home/elk/var/log/blobstore-scheduler/scheduler.log"
+   },
+   "task_log": {
+     "dir": "/home/elk/var/log/blobstore-scheduler/task_log"
+   }
+}

@@ -1,0 +1,63 @@
+{
+  "bind_addr": ":9998",
+  "cluster_id": 202,
+  "idc": [
+    "z0"
+  ],
+  "chunk_size": 16777216,
+  "log": {
+    "level": "info",
+    "filename": "/home/elk/var/log/blobstore-clustermgr1.log"
+  },
+  "auth": {
+    "enable_auth": false,
+    "secret": "testsecret"
+  },
+  "region": "test-region",
+  "db_path": "/home/data/blobstore-clustermgr1/db",
+  "code_mode_policies": [
+    {
+      "mode_name": "EC10P4",
+      "min_size": 0,
+      "max_size": 50331648,
+      "size_ratio": 0.2,
+      "enable": true
+    }
+  ],
+  "raft_config": {
+    "server_config": {
+      "nodeId": 1,
+      "listen_port": 10110,
+      "raft_wal_dir": "/home/data/blobstore-clustermgr1/wal"
+    },
+    "raft_node_config": {
+      "node_protocol": "http://",
+      "members": [
+        {
+          "id": 1,
+          "host": "7.34.198.207:10110",
+          "learner": false,
+          "node_host": "7.34.198.207:9998"
+        },
+        {
+          "id": 2,
+          "host": "7.34.198.208:10110",
+          "learner": false,
+          "node_host": "7.34.198.208:9998"
+        },
+        {
+          "id": 3,
+          "host": "7.34.198.209:10110",
+          "learner": false,
+          "node_host": "7.34.198.209:9998"
+        }
+      ]
+    }
+  },
+
+    "disk_mgr_config": {
+      "refresh_interval_s": 10,
+      "rack_aware": false,
+      "host_aware": false
+    }
+}
