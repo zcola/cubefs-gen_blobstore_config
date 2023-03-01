@@ -1,6 +1,6 @@
 {
    "bind_addr": ":9600",
-   "host": "http://IP:9600",
+   "host": "http://@IP@:9600",
    "idc": "z0",
    "cluster_id": 202,
    "clustermgr": {

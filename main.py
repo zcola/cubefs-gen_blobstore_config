@@ -22,7 +22,7 @@ def gen_file(group_file):
 
     config.read(group_file, encoding='utf-8')
 
-    cluster_id = config['common']['CLUSTER_ID']
+    cluster_id = int(config['common']['CLUSTER_ID'])
     log_path = config['common']['LOG_PATH']
     data_path = config['common']['DATA_PATH']
 
@@ -51,7 +51,7 @@ def gen_file(group_file):
             format(data_path, clustermgr_num)
         clustermgr_dict['raft_config']['raft_node_config']['members'] = clustermgr_members_list
 
-        os.makedirs('gen_config/' + cluster_id, exist_ok=True)
+        os.makedirs('gen_config/{0}'.format(cluster_id), exist_ok=True)
         write_json('gen_config/{0}/blobstore-clustermgr{1}.conf'.format(cluster_id, clustermgr_num),
                    json.dumps(clustermgr_dict, indent=4))
 
@@ -61,7 +61,7 @@ def gen_file(group_file):
     proxy_dict['clustermgr']['hosts'] = clustermgr_http_list
     proxy_dict['mq']['blob_delete_topic'] = config['kafka']['blob_delete_topic']
     proxy_dict['mq']['shard_repair_topic'] = config['kafka']['shard_repair_topic']
-    proxy_dict['mq']['hard_repair_priority_topic'] = config['kafka']['shard_repair_priority_topic']
+    proxy_dict['mq']['shard_repair_priority_topic'] = config['kafka']['shard_repair_priority_topic']
     proxy_dict['mq']['msg_sender']['broker_list'][0] = config['kafka']['broker_list']
     proxy_dict['log']['filename'] = log_path + '/blobstore-proxy.log'
     write_json('gen_config/{0}/blobstore-proxy.conf'.format(cluster_id), json.dumps(proxy_dict, indent=4))
@@ -71,17 +71,18 @@ def gen_file(group_file):
     scheduler_dict = read_json('template/blobstore-scheduler.json')
     scheduler_dict['cluster_id'] = cluster_id
     scheduler_dict['services']['members']['1'] = '{0}:9800'.format(scheduler)
-    scheduler_dict['service_register']['host'] = 'http://{0}'.format(scheduler)
+    scheduler_dict['service_register']['host'] = 'http://{0}:9800'.format(scheduler)
     scheduler_dict['clustermgr']['hosts'] = clustermgr_http_list
     scheduler_dict['blob_delete']['delete_log']['dir'] = log_path + '/blobstore-scheduler/delete_log'
     scheduler_dict['shard_repair']['orphan_shard_log']['dir'] = log_path + '/blobstore-scheduler/orphan_shard_log'
     scheduler_dict['log']['filename'] = log_path + '/blobstore-scheduler/scheduler.log'
     scheduler_dict['task_log']['dir'] = log_path + '/blobstore-scheduler/task_log'
-    scheduler_dict['kafka']["blob_delete"] = {"normal": {"topic": config['kafka']['blob_delete_topic']}}
-    scheduler_dict['kafka']["blob_delete"] = {"failed": {"topic": config['kafka']['blob_delete_failed_topic']}}
-    scheduler_dict['kafka']["shard_repair"] = {"normal": {"topic": config['kafka']['shard_repair_topic']}}
-    scheduler_dict['kafka']["shard_repair"] = {"failed": {"topic": config['kafka']['shard_repair_failed_topic']}}
-    scheduler_dict['kafka']["shard_repair"] = {"priority": {"topic": config['kafka']['shard_repair_priority_topic']}}
+    scheduler_dict['kafka']['broker_list'][0] = config['kafka']['broker_list']
+    scheduler_dict['kafka']["blob_delete"]["normal"] = {"topic": config['kafka']['blob_delete_topic']}
+    scheduler_dict['kafka']["blob_delete"]["failed"] = {"topic": config['kafka']['blob_delete_failed_topic']}
+    scheduler_dict['kafka']["shard_repair"]["normal"] = {"topic": config['kafka']['shard_repair_topic']}
+    scheduler_dict['kafka']["shard_repair"]["failed"] = {"topic": config['kafka']['shard_repair_failed_topic']}
+    scheduler_dict['kafka']["shard_repair"]["priority"] = {"topic": config['kafka']['shard_repair_priority_topic']}
     write_json('gen_config/{0}/blobstore-scheduler.conf'.format(cluster_id), json.dumps(scheduler_dict, indent=4))
 
     # blobnode

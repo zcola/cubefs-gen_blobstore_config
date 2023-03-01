@@ -1,5 +1,5 @@
 {
-     "bind_addr": ":9500",
+     "bind_addr": ":8900",
      "log": {
          "level": "info",
          "filename": "/home/elk/var/log/blobstore-access.log"

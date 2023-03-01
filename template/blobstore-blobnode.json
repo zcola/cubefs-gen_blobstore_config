@@ -3,7 +3,7 @@
    "cluster_id": 202,
    "idc": "z0",
    "rack": "testrack",
-   "host": "http://IP:8899",
+   "host": "http://@IP@:8899",
    "dropped_bid_record": {
      "dir": "/home/elk/var/log/blobstore-blobnode/blobnode_dropped"
    },
