@@ -1,82 +1,88 @@
 {
-   "bind_addr": ":8899",
-   "cluster_id": 202,
-   "idc": "z0",
-   "rack": "testrack",
-   "host": "http://@IP@:8899",
-   "dropped_bid_record": {
-     "dir": "/home/elk/var/log/blobstore-blobnode/blobnode_dropped"
-   },
-   "disks": [
-     {
-       "path": "/disk1",
-       "auto_format": true,
-       "max_chunks": 1024
-     },
-     {
-       "path": "/disk2",
-       "auto_format": true,
-       "max_chunks": 1024
-     },
-     {
-       "path": "/disk3",
-       "auto_format": true,
-       "max_chunks": 1024
-     },
-     {
-       "path": "/disk4",
-       "auto_format": true,
-       "max_chunks": 1024
-     },
-     {
-       "path": "/disk5",
-       "auto_format": true,
-       "max_chunks": 1024
-     },
-     {
-       "path": "/disk6",
-       "auto_format": true,
-       "max_chunks": 1024
-     },
-     {
-       "path": "/disk7",
-       "auto_format": true,
-       "max_chunks": 1024
-     },
-     {
-       "path": "/disk8",
-       "auto_format": true,
-       "max_chunks": 1024
-     },
-     {
-       "path": "/disk9",
-       "auto_format": true,
-       "max_chunks": 1024
-     },
-     {
-       "path": "/disk10",
-       "auto_format": true,
-       "max_chunks": 1024
-     },
-     {
-       "path": "/disk11",
-       "auto_format": true,
-       "max_chunks": 1024
-     }
-   ],
-   "clustermgr": {
-     "hosts": [
-       "http://7.34.198.208:9998",
-       "http://7.34.198.209:9998",
-       "http://7.34.198.207:9998"
-     ]
-   },
-   "disk_config":{
-     "disk_reserved_space_B":107374182400,
-     "compact_reserved_space_B": 42949672960
-   },
-   "log": {
-     "level": "info",
-     "filename": "/home/elk/var/log/blobstore-blobnode/blobnode.log"
-   }
+    "bind_addr": ":8899",
+    "cluster_id": 202,
+    "idc": "z0",
+    "rack": "testrack",
+    "host": "http://@IP@:8899",
+    "dropped_bid_record": {
+        "dir": "/home/elk/var/log/blobstore-blobnode/blobnode_dropped"
+    },
+   
+    "disks": [
+        {
+            "path": "/disk0",
+            "max_chunks": 1024,
+            "auto_format": true
+        },
+        {
+            "path": "/disk1",
+            "max_chunks": 1024,
+            "auto_format": true
+        },
+        {
+            "path": "/disk2",
+            "max_chunks": 1024,
+            "auto_format": true
+        },
+        {
+            "path": "/disk3",
+            "max_chunks": 1024,
+            "auto_format": true
+        },
+        {
+            "path": "/disk4",
+            "max_chunks": 1024,
+            "auto_format": true
+        },
+        {
+            "path": "/disk5",
+            "max_chunks": 1024,
+            "auto_format": true
+        },
+        {
+            "path": "/disk6",
+            "max_chunks": 1024,
+            "auto_format": true
+        },
+        {
+            "path": "/disk7",
+            "max_chunks": 1024,
+            "auto_format": true
+        },
+        {
+            "path": "/disk8",
+            "max_chunks": 1024,
+            "auto_format": true
+        },
+        {
+            "path": "/disk9",
+            "max_chunks": 1024,
+            "auto_format": true
+        },
+        {
+            "path": "/disk10",
+            "max_chunks": 1024,
+            "auto_format": true
+        },
+        {
+            "path": "/disk11",
+            "max_chunks": 1024,
+            "auto_format": true
+        }
+    ],
+    "clustermgr": {
+        "hosts": [
+            "http://7.34.198.207:9998",
+            "http://7.34.198.208:9998",
+            "http://7.34.198.208:9998"
+        ]
+    },
+    "disk_config": {
+        "disk_reserved_space_B": 107374182400,
+        "compact_reserved_space_B": 42949672960
+    },
+    "log": {
+        "level": "info",
+        "filename": "/home/elk/var/log/blobstore-blobnode/blobnode.log"
+    }
 }

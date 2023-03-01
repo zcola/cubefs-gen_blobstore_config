@@ -1,18 +1,50 @@
 {
-     "bind_addr": ":8900",
-     "log": {
-         "level": "info",
-         "filename": "/home/elk/var/log/blobstore-access.log"
+  "bind_addr": ":8900",
+  "log": {
+    "level": "info",
+    "filename": "/home/elk/var/log/blobstore-access.log"
+  },
+  "auditlog": {
+        "logdir": "/home/elk/var/log/blobstore-access_audit", 
+        "backup": 7, 
+        "log_file_suffix": ".log" 
+  },
+  "service_register": {
+    "consul_addr": "http://7.32.133.72:8500",
+    "service_name": "access",
+    "node": "@IP@:8900",
+    "service_ip": "@IP@"
+  },
+  "stream": {
+    "idc": "z0",
+    "blobnode_config": {
+      "client_timeout_ms": 100000,
+      "transport_config": {
+        "max_conns_per_host": 40,
+        "max_idle_conns": 1000,
+        "idle_conn_timeout_ms": 30000
+      }
+    },
+    "cluster_config": {
+      "clustermgr_client_config": {
+        "client_timeout_ms": 30000,
+        "transport_config": {
+          "max_conns_per_host": 2,
+          "max_idle_conns": 4,
+          "idle_conn_timeout_ms": 30000
+        }
       },
-     "stream": {
-         "idc": "z0",
-         "cluster_config": {
-             "region": "test-region",
-             "clusters":[
-                 {"cluster_id":202,
-                "hosts":["http://7.34.198.207:9998",
-                        "http://7.34.198.208:9998",
-                        "http://7.34.198.209:9998"]}]
-         }
-     }
+      "region": "test-region",
+      "clusters": [
+        {
+          "cluster_id": 202,
+          "hosts": [
+            "http://7.34.198.207:9998",
+            "http://7.34.198.208:9998",
+            "http://7.34.198.208:9998"
+          ]
+        }
+      ]
+    }
+  }
 }
