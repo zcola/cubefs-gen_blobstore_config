@@ -4,12 +4,10 @@
     "services": {
         "leader": 1,
         "node_id": 1,
-        "members": {
-            "1": "7.34.198.207:9800"
-        }
+        "members": { "1": "7.34.198.207:9800", "2": "7.34.198.207:9800", "3": "7.34.198.207:9800" }
     },
     "service_register": {
-        "host": "http://7.34.198.207:9800",
+        "host": "http://@IP@:9800",
         "idc": "z0"
     },
     "clustermgr": {
@@ -21,7 +19,7 @@
     },
     "kafka": {
         "broker_list": [
-            "tang.dasdas.com:9092"
+            "tang.brokedadasdasdaom:9092"
         ],
         "blob_delete": {
             "failed": {
@@ -59,5 +57,16 @@
     },
     "task_log": {
         "dir": "/home/elk/var/log/blobstore-scheduler/task_log"
+    },
+    "balance": {
+    "disk_concurrency": 100,    
+    "max_disk_free_chunk_cnt": 500,    
+    "min_disk_free_chunk_cnt": 100,      
+    "prepare_queue_retry_delay_s": 60,    
+    "finish_queue_retry_delay_s": 60,    
+    "cancel_punish_duration_s": 60,    
+    "work_queue_size": 600,    
+    "collect_task_interval_s": 10,    
+    "check_task_interval_s": 1    
     }
 }

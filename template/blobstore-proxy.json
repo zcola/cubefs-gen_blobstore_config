@@ -4,6 +4,18 @@
     "idc": "z0",
     "cluster_id": 202,
     "init_volume_num": 100,
+    "default_alloc_vols_num": 50,
+    "auditlog": {
+        "logdir": "/home/elk/var/log/blobstore-proxy_audit",
+        "backup": 7,
+        "log_file_suffix": ".log",
+        "metric_config": {
+        "service": "PROXY",
+        "enable_req_length_cnt": true,
+        "enable_resp_duration": true,
+        "enable_resp_length_cnt": true
+        }
+  },
     "clustermgr": {
         "hosts": [
             "http://7.34.198.207:9998",
@@ -21,7 +33,7 @@
         "shard_repair_priority_topic": "tang_202_shard_repair_prior",
         "msg_sender": {
             "broker_list": [
-                "tadasdasdom:9092"
+                "tdasdasdatease.com:9092"
             ]
         }
     },

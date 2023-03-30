@@ -57,6 +57,6 @@
     "disk_mgr_config": {
         "refresh_interval_s": 10,
         "rack_aware": false,
-        "host_aware": false
+        "host_aware": true
     }
 }

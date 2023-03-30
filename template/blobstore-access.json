@@ -7,16 +7,25 @@
   "auditlog": {
         "logdir": "/home/elk/var/log/blobstore-access_audit", 
         "backup": 7, 
-        "log_file_suffix": ".log" 
+        "log_file_suffix": ".log", 
+        "metric_config": {
+        "service": "ACCESS",
+        "enable_req_length_cnt": true,
+        "enable_resp_duration": true,
+        "enable_resp_length_cnt": true
+        }
   },
   "service_register": {
-    "consul_addr": "http://7.32.133.72:8500",
+    "consul_addr": "http://10.90.131.124:8500",
     "service_name": "access",
     "node": "@IP@:8900",
-    "service_ip": "@IP@"
+    "service_ip": "@IP@",
+    "health_port": [ 9801, 9805 ] 
   },
   "stream": {
     "idc": "z0",
+    "max_blob_size": 16777216,
+    "encoder_enableverify": true,
     "blobnode_config": {
       "client_timeout_ms": 100000,
       "transport_config": {
@@ -35,13 +44,14 @@
         }
       },
       "region": "test-region",
+      "region_magic": "test-region-magic",
       "clusters": [
         {
           "cluster_id": 202,
           "hosts": [
-            "http://7.34.198.207:9998",
-            "http://7.34.198.208:9998",
-            "http://7.34.198.208:9998"
+            "http://10.90.131.137:9998",
+            "http://10.90.131.138:9998",
+            "http://10.90.131.139:9998"
           ]
         }
       ]
